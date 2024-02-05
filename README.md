@@ -92,3 +92,25 @@ Find a face in the voyager index.
 **Response:**
 
 - `200 OK` on success
+
+
+## Installing and Running a Service Using Docker
+
+Follow these steps to build and run your Docker container:
+
+1. **Clone this repository**
+   ```bash
+   git clone https://github.com/AkhmadRamadani/deepface-exploration.git
+   ```
+2. **Navigate to the directory**
+   ```bash
+   cd deepface-exploration
+   ```
+3. **Build the Docker image**
+   ```bash
+   docker build
+   ```
+4. **Run the Docker**
+   ```bash
+   docker-compose up -d
+   ``` 
