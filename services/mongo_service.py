@@ -5,7 +5,7 @@ from flask import jsonify
 import json
 
 class MongoService:
-    uri = "mongodb://venturo:Bismillah2023*@103.125.36.80:14045/"
+    uri = "mongodb://"
     # Create a new client and connect to the server
     client = MongoClient(uri)
     
