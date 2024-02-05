@@ -1,0 +1,9 @@
+Flask
+numpy
+scikit-learn
+matplotlib
+pandas
+deepface
+gunicorn
+pymongo
+voyager
