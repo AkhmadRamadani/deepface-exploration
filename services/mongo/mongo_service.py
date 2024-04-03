@@ -1,17 +1,11 @@
-from pymongo import MongoClient
-from bson.objectid import ObjectId
-from bson.json_util import dumps
 from flask import jsonify
-import json
 
-class MongoService:
-    uri = "mongodb://venturo:Bismillah2023*@103.125.36.80:14045/"
-    # Create a new client and connect to the server
-    client = MongoClient(uri)
-    
-    def __init__(self):
-        self.db = self.client["humanis_face"]
-        self.collection = self.db["face_test"]
+class MongoFaceService():   
+
+    def __init__(self, client):
+        self.client = client
+        self.db = self.client["face_recognition"]
+        self.collection = self.db["faces"]
 
     def get_face_representation(self, user_id):
         user = self.collection.find_one({"_id": user_id})
@@ -53,7 +47,6 @@ class MongoService:
                 else:
                     return False
         except Exception as e:
-            print(e)
             return False
             
     
@@ -68,7 +61,6 @@ class MongoService:
         return users
 
     def get_user_from_annoy_indexing(self, annoy_indexing):
-        print('Annoy indexing: ', annoy_indexing)
         user = self.collection.find_one({"annoy_indexing": annoy_indexing})
         return user
 

@@ -7,3 +7,6 @@ deepface
 gunicorn
 pymongo
 voyager
+cryptography
+bcrypt
+bson

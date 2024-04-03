@@ -1,9 +1,6 @@
 
 from voyager import Index, Space
-from services.mongo_service import MongoService
 import numpy as np
-
-
 class VoyagerService:
     def __init__(self, mongo_service):
         self.index = None
@@ -18,19 +15,15 @@ class VoyagerService:
             annoy_indexing = user['annoy_indexing']
             self.index.add_item(face_embedding, annoy_indexing)
         self.index.save('model_index/voyager_index.voy')
-        print('Voyager model saved')
     
     def read_index(self):
         self.index = Index.load('model_index/voyager_index.voy')
-        print('Voyager model loaded')
 
     def get_nns_by_vector(self, vector, n):
         if self.index == None:
             self.read_index()
         neighbors, distances = self.index.query(vector, n)
         if len(neighbors) > 0:
-            for i in range(len(neighbors)):
-                print(neighbors[i], distances[i])
             neighbor = neighbors[0][0]
             neighbor = int(neighbor)
             user = self.mongo.get_user_from_annoy_indexing(neighbor)
